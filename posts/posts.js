@@ -28,7 +28,6 @@ const getPostsAsyncExample = async () => {
     console.log(data, "using async/await")
 
     usersPosts(data)
-    // testing(data)
    
 
 }
