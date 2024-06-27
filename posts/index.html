@@ -22,20 +22,69 @@
     <title>/POSTS</title>
 
     <!-- Run BEFORE page is finished loading (before window.onload): -->
+     <script> </script>
     <script src="../auth.js"></script>
     <script>
         if (isLoggedIn() === false) window.location.replace("/");
     </script>
 </head>
 <body>
-
+    
     <header>
-        <h1>POSTS PAGE</h1>
+        <nav class="navbar bg-dark navbar-expand-lg navbar-light bg-light "data-bs-theme="dark">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+            <div class="collapse navbar-collapse" id="navbarNav"style="padding-top: 20px;">
+            <a class="navbar-brand" href="./index.html"><svg xmlns="http://www.w3.org/2000/svg" width="100" height="50" fill="currentColor" class="bi bi-chat-left-quote" viewBox="0 0 16 16">
+                <path d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
+                <path d="M7.066 4.76A1.665 1.665 0 0 0 4 5.668a1.667 1.667 0 0 0 2.561 1.406c-.131.389-.375.804-.777 1.22a.417.417 0 1 0 .6.58c1.486-1.54 1.293-3.214.682-4.112zm4 0A1.665 1.665 0 0 0 8 5.668a1.667 1.667 0 0 0 2.561 1.406c-.131.389-.375.804-.777 1.22a.417.417 0 1 0 .6.58c1.486-1.54 1.293-3.214.682-4.112z"/>
+              </svg></a>
+            <div class="collapse navbar-collapse" id="navbarNav" style="padding-left:20px;">
+                <ul class="navbar-nav"> 
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="./index.html">Post</a>
+                    </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="../profile/index.html">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                    </li>
+                </ul>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-info" role="button" aria-current="page"  onclick={logout()} style="margin-right: 20px;" >Logout</a>
+                    </li>
+            </ul>
+            </div>
+        </div>
+        </div>
+            </nav>
     </header>
-
-    <main></main>
-
-    <footer></footer>
+    <main>
+        <!-- created logoutButton on click run logout function -->
+       
+        <!-- divs to contain all content, author, and timestamp of user -->
+            <div id="usersPosts">
+                <div id="mainContainerDiv">
+                    
+                </div>
+            </div>
+            
+    </main>
+    <footer id="footer" >
+        <div class=" border-top footer">
+          <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
+            <svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"/></svg>
+          </a>
+          <span><svg xmlns="http://www.w3.org/2000/svg" width="100" height="50" fill="currentColor" class="bi bi-chat-left-quote" viewBox="0 0 16 16">
+            <path d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
+            <path d="M7.066 4.76A1.665 1.665 0 0 0 4 5.668a1.667 1.667 0 0 0 2.561 1.406c-.131.389-.375.804-.777 1.22a.417.417 0 1 0 .6.58c1.486-1.54 1.293-3.214.682-4.112zm4 0A1.665 1.665 0 0 0 8 5.668a1.667 1.667 0 0 0 2.561 1.406c-.131.389-.375.804-.777 1.22a.417.417 0 1 0 .6.58c1.486-1.54 1.293-3.214.682-4.112z"/>
+          </svg></span>
+          <span class="text-muted">&copy; 2021 Company, Inc</span>
+        </div>
+      </footer>
 
     <!-- Page-specific code -->
     <script src="./posts.js"></script>
