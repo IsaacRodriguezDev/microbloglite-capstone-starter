@@ -19,8 +19,16 @@ let registerUser =  async(event)=>{
             body:JSON.stringify(formDataAsObject)
         })
         let userData = await response.json()
-        console.log(userData, 'should show up if created user')
+        if(userData.statusCode === 400){
+            alert('please fill in fields')
+        } if(userData.statusCode === 409){
+            alert('user already exists')
+        }
+        else{
         window.location.href ='../index.html'
+
+        }
+        console.log(userData, 'showing')
 
     }catch(error){
         console.log(error)

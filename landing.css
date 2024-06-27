@@ -1,1 +1,26 @@
 /* Landing Page CSS */
+body{
+    min-height: 100vh;
+    background-color: rgba(121, 75, 74, 0.226);
+}
+
+#formDiv{
+   
+    min-height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+header{
+    text-align: center;
+}
+#footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 150px;
+    background-color: rgb(255, 255, 255)
+  }
+  .footer{
+    padding-top: 50px;
+  }
