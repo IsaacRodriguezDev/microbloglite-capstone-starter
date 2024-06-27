@@ -51,7 +51,7 @@ function login (loginData) {
                 // Here is where you might want to add an error notification 
                 // or other visible indicator to the page so that the user is  
                 // informed that they have entered the wrong login info.
-                return null
+                 alert('incorrect username or password')
             }
 
             window.localStorage.setItem("login-data", JSON.stringify(loginData));
