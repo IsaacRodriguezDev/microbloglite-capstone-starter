@@ -57,22 +57,26 @@ let usersPosts = async (usersData)=>{
     let likeCounter = document.createElement('span')
 likeCounter.className = 'likeCounter'
 likeCounter.textContent = ` 0 `
+
+likeCounter.setAttribute('id','likeCounter')
+
 likeForm.addEventListener('submit',giveLike)
     function giveLike(e){
         e.preventDefault()
+   
         let existingInput = document.getElementById('input1')
         if(existingInput){
             existingInput.remove()
         }
-        let x = document.createElement('input')
-        x.setAttribute('id','input1')
-        x.setAttribute('value', `${usersData[i]._id}`)
-        document.body.appendChild(x)
+        let generatedInput = document.createElement('input')
+        generatedInput.setAttribute('id','input1')
+        generatedInput.setAttribute('value', `${usersData[i]._id}`)
+        document.body.appendChild(generatedInput)
         console.log(e.target)
         if(document.getElementById('input1')){
             let thisData = document.getElementById('input1')
             console.log(thisData.value,'getting id')
-            testing(thisData.value)
+            addingLike(thisData.value)
            
         }
         
@@ -85,13 +89,12 @@ likeForm.addEventListener('submit',giveLike)
         
     }
     
+    let like 
     
-    likeCounter.setAttribute('id','likeCounter')
-    let like = 0
     if(usersData[i].likes.length > 0){
-       like = usersData[i].likes.length
-       likeCounter.textContent = ` ${like}`
-    }
+        like = usersData[i].likes.length
+        likeCounter.textContent = ` ${like}`
+     }
     let dislikeButton = document.createElement('button')
     dislikeButton.classList.add('btn','dislikeBtn')
     dislikeButton.innerHTML= `&#9829; dislike`
@@ -99,7 +102,6 @@ likeForm.addEventListener('submit',giveLike)
     let likeButton = document.createElement('button')
     likeButton.classList.add('btn','likeBtn')
     likeButton.innerHTML = `&#9825; like`
-    //&#9829;
     creatingDiv(userPosts,usernameDiv,usersData[i],'username',mainContainerDiv,divContainer)
     creatingDiv(userPosts,contentDiv,usersData[i],'text',mainContainerDiv,divContainer)
     creatingDiv(userPosts,datePostedDiv,usersData[i],'createdAt',mainContainerDiv,divContainer,likeButton,likeCounter,dislikeButton,dislikeForm,likeForm)
@@ -129,7 +131,7 @@ let creatingDiv = (userPosts,div,userData,object,mainContainerDiv,divContainer,l
     }
    
 }
-let testing = async (value)=>{
+let addingLike = async (value)=>{
     console.log(value)
     console.log('this is a msg')
     let loginData = getLoginData();

@@ -2,13 +2,14 @@
 window.onload = () => {
   let postForm = document.getElementById("postForm");
   postForm.addEventListener("submit", creatingPost);
+  userName()
 };
 
 let creatingPost = async (event) => {
  event.preventDefault()
   let formData = new FormData(event.target);
   let formDataAsObject = Object.fromEntries(formData);
-   console.log(formDataAsObject,'ant gay')
+   console.log(formDataAsObject)
   const loginData = getLoginData();
 
   try {
@@ -24,10 +25,20 @@ let creatingPost = async (event) => {
       }
     );
     let data = await response.json();
-    console.log(data, 'created post');
+    if(data.statusCode === 400){
+      alert('Did not create a post')
+    }else{
+      console.log(data, 'created post');
     event.target.reset()
+    alert('created post')
+    }
+    
         
   } catch (error) {
     console.log(error);
   }
 };
+function userName(){
+  let loginData = getLoginData()
+  document.getElementById('usersName').innerHTML = `<br>${loginData.username}</br>`
+}
