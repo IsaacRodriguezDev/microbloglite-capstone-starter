@@ -61,9 +61,9 @@ let usersPosts = async (usersData)=>{
 
 likeForm.addEventListener('submit',giveLike)
 // giveLike function generates an imput that gives a value of the userData id when clicked and it removes the previous value if it is detected again
+
     function giveLike(e){
         e.preventDefault()
-   
         let existingInput = document.getElementById('input1')
         if(existingInput){
             existingInput.remove()
