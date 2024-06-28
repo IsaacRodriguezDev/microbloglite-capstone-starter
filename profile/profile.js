@@ -3,8 +3,9 @@ window.onload = () => {
   let postForm = document.getElementById("postForm");
   postForm.addEventListener("submit", creatingPost);
   userName()
-};
 
+};
+// creatingPost function allows user to make a post 
 let creatingPost = async (event) => {
  event.preventDefault()
   let formData = new FormData(event.target);
@@ -38,6 +39,7 @@ let creatingPost = async (event) => {
     console.log(error);
   }
 };
+// userName function shows current username of user logged in
 function userName(){
   let loginData = getLoginData()
   document.getElementById('usersName').innerHTML = `<br>${loginData.username}</br>`

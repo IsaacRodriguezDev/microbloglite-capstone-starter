@@ -4,11 +4,11 @@
 
 window.onload = () => {
    
-    getPostsAsyncExample() 
+    getPosts() 
 }
 
 
-const getPostsAsyncExample = async () => {
+const getPosts = async () => {
 
     const loginData = getLoginData();
 
@@ -28,7 +28,6 @@ const getPostsAsyncExample = async () => {
     console.log(data, "using async/await")
 
     usersPosts(data)
-   
 
 }
 
@@ -55,12 +54,13 @@ let usersPosts = async (usersData)=>{
     let dislikeForm = document.createElement('form')
     dislikeForm.className = 'dislikeButtonContainer'
     let likeCounter = document.createElement('span')
-likeCounter.className = 'likeCounter'
-likeCounter.textContent = ` 0 `
+    likeCounter.className = 'likeCounter'
+    likeCounter.textContent = ` 0 `
 
-likeCounter.setAttribute('id','likeCounter')
+    likeCounter.setAttribute('id','likeCounter')
 
 likeForm.addEventListener('submit',giveLike)
+// giveLike function generates an imput that gives a value of the userData id when clicked and it removes the previous value if it is detected again
     function giveLike(e){
         e.preventDefault()
    
@@ -72,29 +72,29 @@ likeForm.addEventListener('submit',giveLike)
         generatedInput.setAttribute('id','input1')
         generatedInput.setAttribute('value', `${usersData[i]._id}`)
         document.body.appendChild(generatedInput)
-        console.log(e.target)
         if(document.getElementById('input1')){
             let thisData = document.getElementById('input1')
-            console.log(thisData.value,'getting id')
             addingLike(thisData.value)
            
         }
         
     }
     dislikeForm.addEventListener('submit',dislike)
+    // dislike function creates a likes variable and stores the users current likes
     function dislike(e){
         e.preventDefault()
-        let postId = usersData[i].likes
-        deleteLike(postId)
+        let likes = usersData[i].likes
+        deleteLike(likes)
         
     }
     
-    let like 
     
+    // displays the current number of likes on the posts
     if(usersData[i].likes.length > 0){
-        like = usersData[i].likes.length
+       let like = usersData[i].likes.length
         likeCounter.textContent = ` ${like}`
      }
+
     let dislikeButton = document.createElement('button')
     dislikeButton.classList.add('btn','dislikeBtn')
     dislikeButton.innerHTML= `&#9829; dislike`
@@ -131,9 +131,8 @@ let creatingDiv = (userPosts,div,userData,object,mainContainerDiv,divContainer,l
     }
    
 }
+// addingLike function creates a like
 let addingLike = async (value)=>{
-    console.log(value)
-    console.log('this is a msg')
     let loginData = getLoginData();
     let response = await fetch("http://microbloglite.us-east-2.elasticbeanstalk.com/api/likes", {
         method: "POST",
@@ -148,22 +147,19 @@ let addingLike = async (value)=>{
     })
     let data = await response.json()
     // make a counter for the like button here using this data
-    // if something is true then add count somehow
+    // if something is true then add count 
     console.log(data,'LIKE ADDED')
     location.reload()
 
     }
 
-
+// deleteLike function removes a like
     let deleteLike = async (likedata)=>{
         let loginData = getLoginData();
-        console.log(likedata)
         
         for(let i =0; i<likedata.length;i++){
         
-            console.log(likedata[i]._id)
         let id = likedata[i]._id
-      console.log(loginData.username)
       if(loginData.username){
 
         let response = await fetch('http://microbloglite.us-east-2.elasticbeanstalk.com/api/likes/'+ id, {

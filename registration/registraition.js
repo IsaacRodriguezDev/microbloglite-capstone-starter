@@ -3,7 +3,7 @@ window.onload = ()=>{
     const registerFrom = document.getElementById('register')
     registerFrom.addEventListener('submit', registerUser)
 }
-
+// registerUser function creates a new user taken from the values of form
 let registerUser =  async(event)=>{
     event.preventDefault()
    
